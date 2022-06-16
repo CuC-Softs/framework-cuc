@@ -4,8 +4,11 @@ import livereload from "livereload";
 import DiscordExceptionHandler from "../../app/exception/DiscordExceptionHandler";
 import routes from "../routes";
 import io from "socket.io";
+import connectLiveReload from "connect-livereload";
 
 class App {
+  viewsPath = path.join(__dirname, "..", "..", "resources", "views");
+  publicPath = path.join(__dirname, "..", "..", "public");
   constructor() {
     this.app = express();
     this.server = http.createServer(this.app);
@@ -16,7 +19,9 @@ class App {
     this.exceptionHandler();
   }
 
-  middleweres() {}
+  middleweres() {
+    this.app.use(connectLiveReload());
+  }
 
   livereload() {
     const liveReloadServer = livereload.createServer();
