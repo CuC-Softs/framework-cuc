@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-<<<<<<< Updated upstream
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/resources/ts/app.ts":
@@ -3407,10 +3406,6 @@ document.addEventListener('DOMContentLoaded', function () {
 //# sourceMappingURL=flowbite.js.map
 
 /***/ }),
-=======
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
->>>>>>> Stashed changes
 
 /***/ "./src/resources/css/app.css":
 /*!***********************************!*\
@@ -3418,6 +3413,7 @@ document.addEventListener('DOMContentLoaded', function () {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -3561,10 +3557,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-<<<<<<< Updated upstream
 /******/ 	__webpack_require__.O(undefined, ["src/public/css/app"], () => (__webpack_require__("./src/resources/ts/app.ts")))
-=======
->>>>>>> Stashed changes
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["src/public/css/app"], () => (__webpack_require__("./src/resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
