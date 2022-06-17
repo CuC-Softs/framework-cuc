@@ -8,14 +8,14 @@ import { engine } from "express-handlebars";
 import path from "path";
 import cookieParser from "cookie-parser";
 import connectLiveReload from "connect-livereload";
-import { ServerToClientEvents, ClientToServerEvents, InterServerEvents, SocketData } from "../../@types/Socket";
+
 
 class App {
   public viewsPath = path.join(__dirname, "..", "..", "resources", "views");
   public publicPath = path.join(__dirname, "..", "..", "public");
   public app;
   public server;
-  public io: any;
+  public io!: socketIo.Server;
 
   constructor() {
     this.app = express();
@@ -61,7 +61,7 @@ class App {
     });
   }
 
-  public webSockets(): void {
+  public webSockets() {
     this.io = new socketIo.Server(this.server, {
       cors: {
         methods: ["GET", "POST"],
@@ -71,4 +71,4 @@ class App {
   }
 }
 
-export default new App().server;
+export default new App();

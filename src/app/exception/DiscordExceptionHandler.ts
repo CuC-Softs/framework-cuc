@@ -1,8 +1,7 @@
 import axios from "axios";
-import 'dotenv/config';
 
 class DiscordExceptionHandler {
-  async capture(context: string, error: Error) {
+  public async capture(context: string, error: Error) {
     try {
       const body = {
         username: "Application Exception",
