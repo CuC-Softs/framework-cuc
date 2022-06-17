@@ -4074,6 +4074,11 @@ minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
+mix-tailwindcss@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/mix-tailwindcss/-/mix-tailwindcss-1.3.0.tgz#8b0315863aff99b7fa1de3c73c922d60848a4ad7"
+  integrity sha512-K76U+TS2wiKOKv8I6muMGbzg+3CrAQaI5cGduMzmjkSLS1GolL4kYSGJCP9LrtjAmFb9vINCzqPDNiNEjoeX3w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
