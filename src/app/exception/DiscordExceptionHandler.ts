@@ -19,14 +19,14 @@ class DiscordExceptionHandler {
                 name: "🧪 Context",
                 value: context,
               },
-              // {
-              //   name: "❌ Error",
-              //   value: `\`\`\`\n${
-              //     error.stack.length > 1000
-              //       ? `${error.stack.slice(0, 1000)}...`
-              //       : error.stack
-              //   }\n\`\`\`\n`,
-              // },
+              {
+                name: "❌ Error",
+                value: `\`\`\`\n${
+                  error.stack!.length > 1000
+                    ? `${error.stack!.slice(0, 1000)}...`
+                    : error.stack
+                }\n\`\`\`\n`,
+              },
             ],
           },
         ],
@@ -35,6 +35,7 @@ class DiscordExceptionHandler {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
+      console.log(error);
     }
   }
 }
