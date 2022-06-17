@@ -1,4 +1,4 @@
 const mix = require("laravel-mix");
 
-mix.js("src/resources/js/app.js", "src/public/js");
+mix.ts("src/resources/ts/app.ts", "src/public/js");
 mix.postCss('src/resources/css/app.css', 'src/public/css');
