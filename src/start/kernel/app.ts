@@ -1,29 +1,33 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import http from "http";
 import livereload from "livereload";
 import DiscordExceptionHandler from "../../app/exception/DiscordExceptionHandler";
 import routes from "../routes";
-import io from "socket.io";
+import * as socketIo from "socket.io";
 import { engine } from "express-handlebars";
 import path from "path";
 import cookieParser from "cookie-parser";
 import connectLiveReload from "connect-livereload";
 
+
 class App {
-  viewsPath = path.join(__dirname, "..", "..", "resources", "views");
-  publicPath = path.join(__dirname, "..", "..", "public");
+  public viewsPath = path.join(__dirname, "..", "..", "resources", "views");
+  public publicPath = path.join(__dirname, "..", "..", "public");
+  public app;
+  public server;
+  public io!: socketIo.Server;
 
   constructor() {
     this.app = express();
     this.server = http.createServer(this.app);
     this.livereload();
-    this.middleweres();
+    this.middlewares();
     this.routes();
-    this.socket();
+    this.webSockets();
     this.exceptionHandler();
   }
 
-  middleweres() {
+  public middlewares() {
     this.app.use(connectLiveReload());
     this.app.engine("hbs", engine({ extname: ".hbs" }));
     this.app.set("views", this.viewsPath);
@@ -37,7 +41,7 @@ class App {
     );
   }
 
-  livereload() {
+  public livereload() {
     const liveReloadServer = livereload.createServer();
     liveReloadServer.server.once("connection", () => {
       setTimeout(() => {
@@ -50,15 +54,15 @@ class App {
     this.app.use("/", routes);
   }
 
-  exceptionHandler() {
-    this.app.use((err, req, res, next) => {
+  public exceptionHandler() {
+    this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       DiscordExceptionHandler.capture(req.url, err);
       next();
     });
   }
 
-  socket() {
-    this.socket = io(this.server, {
+  public webSockets() {
+    this.io = new socketIo.Server(this.server, {
       cors: {
         methods: ["GET", "POST"],
         credentials: true,
@@ -67,4 +71,4 @@ class App {
   }
 }
 
-export default new App().server;
+export default new App();

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class DiscordExceptionHandler {
-  async capture(context, error) {
+  public async capture(context: string, error: Error) {
     try {
       const body = {
         username: "Application Exception",
@@ -22,8 +22,8 @@ class DiscordExceptionHandler {
               {
                 name: "❌ Error",
                 value: `\`\`\`\n${
-                  error.stack.length > 1000
-                    ? `${error.stack.slice(0, 1000)}...`
+                  error.stack!.length > 1000
+                    ? `${error.stack!.slice(0, 1000)}...`
                     : error.stack
                 }\n\`\`\`\n`,
               },
@@ -31,9 +31,10 @@ class DiscordExceptionHandler {
           },
         ],
       };
-      await axios.post(process.env.DISCORD_EXCEPTION_WEBHOOK, body);
+      await axios.post(process.env.DISCORD_EXCEPTION_WEBHOOK!, body);
     } catch (err) {
       // eslint-disable-next-line no-console
+      console.log(err);
       console.log(error);
     }
   }
